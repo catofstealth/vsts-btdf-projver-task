@@ -5,3 +5,4 @@
 /packages
 .vs/
 *.vsix
+/buildtask/node_modules
