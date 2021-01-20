@@ -1,7 +1,7 @@
 {
-    "id": "d0ec3baa-349a-11eb-adc1-0242ac120003",
+    "id": "416b14b0-7411-4148-bdbe-42f73fd86c77",
     "name": "BTDFProjectFileUpdater",
-    "friendlyName": "BTDF Project File Versioning",
+    "friendlyName": "BTDF Project File Version Updater",
     "description": "Modifies the Product Version, Project Version and Product ID in the BTDFProj file prior to creating the MSI.",
     "helpMarkDown": "",
     "category": "Build",
@@ -13,7 +13,7 @@
     "version": {
       "Major": 0,
       "Minor": 1,
-      "Patch": 2
+      "Patch": 3
     },
     "instanceNameFormat": "Update BTDF Project File",
     "groups":[
@@ -62,7 +62,7 @@
           "label": "Combine the Patch and Build Numbers",
           "defaultValue": "true",
           "helpMarkDown": "Combine the Patch and Build Numbers into one number from Major.Minor.Patch.Build.",
-          "required":  true
+          "required":  false
       },
       {
           "name": "UpdateProjectVersion",
