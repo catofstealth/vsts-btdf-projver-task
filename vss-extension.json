@@ -1,18 +1,18 @@
 {
   "manifestVersion": 1,
   "public": true,
-  "id": "BTDFProjectUpdater",
-  "version": "0.1.9",
-  "name": "BTDF Project Updater",
-  "description": "Modifies the Product Version and Product ID in the BTDFProj file prior to creating the MSI.",
-  "publisher": "MacrossPlusInc",
+  "id": "BTDFProjectFileUpdaterTypeScript",
+  "version": "0.1.2.1",
+  "name": "BTDF Project File Updater (TypeScript)",
+  "description": "Modifies the Product Version, Project Version and Product ID in the BTDFProj file prior to creating the MSI.",
+  "publisher": "Catcomp",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
   "icons": {
-    "default": "images/extension-icon.png"
+    "default": "images/icon.png"
   },
   "scopes": [
     "vso.build",
@@ -25,28 +25,27 @@
     "Version",
     "GitVersion"
   ],
-
   "content": {
     "details": { "path": "overview.md" },
     "license": { "path": "LICENSE" }
   },
   "links": {
-    "repository": {"uri": "https://github.com/Antebios/vsts-btdf-projver-task"  },
-    "support": { "uri": "https://github.com/Antebios/vsts-btdf-projver-task/issues" }
+    "repository": {"uri": "https://github.com/catofstealth/vsts-btdf-projver-task"  },
+    "support": { "uri": "https://github.com/catofstealth/vsts-btdf-projver-task/issues" }
   },
   "repository": { 
     "type": "git", 
-    "uri": "https://github.com/Antebios/vsts-btdf-projver-task" 
+    "uri": "https://github.com/catofstealth/vsts-btdf-projver-task" 
   }, 
   "contributions": [
     {
-      "id": "btdf-project-updater-task",
+      "id": "vsts-btdf-projver-task",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "task"
+        "name": "buildtask"
       }
     }
   ],
@@ -56,8 +55,7 @@
       "addressable": true
     },
     {
-
-      "path": "task"
+      "path": "buildtask"
     }
   ]
 }
