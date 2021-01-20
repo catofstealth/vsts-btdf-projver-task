@@ -5,4 +5,7 @@
 /packages
 .vs/
 *.vsix
+
 /buildtask/node_modules
+buildtask/tests/*.js
+buildtask/*.js
