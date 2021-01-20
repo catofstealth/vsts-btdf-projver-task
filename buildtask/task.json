@@ -70,7 +70,7 @@
           "label": "Update the Project Version as well as Product Version",
           "defaultValue": "false",
           "helpMarkDown": "Updates the Project Version as well as the Product Version. This allows generated start menu items to be unique across versions.",
-          "required":  true
+          "required":  false
       }
     ],
     "execution": {
