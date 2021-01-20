@@ -15,8 +15,15 @@ async function run() {
         let MethodOfVersionNumber: string | undefined = tl.getInput('MethodOfVersionNumber', true);
         let VersionNumberEnvVar: string | undefined = tl.getInput('VersionNumberEnvVar', false);
 
-        let CombinePatchBuildNumbers: Boolean = new Boolean(tl.getInput('CombinePatchBuildNumbers')).valueOf();
-        let UpdateProjectVersion: Boolean = new Boolean(tl.getInput("UpdateProjectVersion")).valueOf();
+        let CombinePatchBuildNumbers: Boolean = false;
+        if(tl.getInput('CombinePatchBuildNumbers')?.toLowerCase() == 'true'){
+            CombinePatchBuildNumbers = true;
+        }
+        
+        let UpdateProjectVersion: Boolean = false;
+        if(tl.getInput('UpdateProjectVersion')?.toLowerCase() == 'true'){
+            UpdateProjectVersion = true;
+        }
 
         console.log('**********************************************************************');
         console.log('** ProjectFile', ProjectFile);
@@ -103,20 +110,22 @@ async function run() {
 
         } else {
 
-            console.log('Version Number to use: $VersionNumber');
-            console.log('Project file to modify: $ProjectFileToModify');
+            console.log('Version Number to use: ' + VersionNumber);
+            console.log('Project file to modify: ' + ProjectFile);
 
-            if(ProjectFile != undefined)
+            if(ProjectFile != undefined && fs.existsSync(ProjectFile))
             {
                 let FileContents = fs.readFileSync(ProjectFile,'utf8');
-                let NewFileContents = FileContents.replace('<ProductVersion>(.+?)<\/ProductVersion>',"<ProductVersion>" + VersionNumber + "</ProductVersion>");
+
+                let NewFileContents = FileContents.replace(/<ProductVersion>(.+?)<\/ProductVersion>/,"<ProductVersion>" + VersionNumber + "</ProductVersion>");
                 if(UpdateProjectVersion == true){
                     //regex replace....
-                    NewFileContents = NewFileContents.replace('<ProjectVersion>(.+?)<\/ProjectVersion>',"<ProjectVersion>" + VersionNumber + "</ProjectVersion>");
+                    NewFileContents = NewFileContents.replace(/<ProjectVersion>(.+?)<\/ProjectVersion>/,"<ProjectVersion>" + VersionNumber + "</ProjectVersion>");
                 }
                 let NewGuidToUse = Guid.create();
                 console.log('Guid to use: ', NewGuidToUse);
-                let NewFileContents2 = NewFileContents.replace('<ProductId>(.+?)<\/ProductId>',"<ProductId>" + NewGuidToUse + "</ProductId>");
+                let NewFileContents2 = NewFileContents.replace(/<ProductId>(.+?)<\/ProductId>/ ,"<ProductId>" + NewGuidToUse + "</ProductId>");
+                
                 fs.writeFileSync(ProjectFile, NewFileContents2);
             }
             

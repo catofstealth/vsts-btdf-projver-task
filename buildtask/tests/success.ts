@@ -5,6 +5,10 @@ import path = require('path');
 let taskPath = path.join(__dirname, '..', 'index.js');
 let tmr: tmrm.TaskMockRunner = new tmrm.TaskMockRunner(taskPath);
 
-tmr.setInput('samplestring', 'human');
+tmr.setInput('ProjectFile' ,'.\\tests\\sample.btdfproj');
+tmr.setInput('MethodOfVersionNumber' ,'BuildNumber');
+tmr.setInput('VersionNumberEnvVar' ,'');
+tmr.setInput('CombinePatchBuildNumbers' ,'false');
+tmr.setInput('UpdateProjectVersion' ,'true');
 
 tmr.run();

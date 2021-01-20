@@ -13,7 +13,7 @@
     "version": {
       "Major": 0,
       "Minor": 1,
-      "Patch": 4
+      "Patch": 5
     },
     "instanceNameFormat": "Update BTDF Project File",
     "groups":[
@@ -60,7 +60,7 @@
           "name": "CombinePatchBuildNumbers",
           "type": "boolean",
           "label": "Combine the Patch and Build Numbers",
-          "defaultValue": "true",
+          "defaultValue": "false",
           "helpMarkDown": "Combine the Patch and Build Numbers into one number from Major.Minor.Patch.Build.",
           "required":  false
       },
@@ -68,7 +68,7 @@
           "name": "UpdateProjectVersion",
           "type": "boolean",
           "label": "Update the Project Version as well as Product Version",
-          "defaultValue": "false",
+          "defaultValue": "true",
           "helpMarkDown": "Updates the Project Version as well as the Product Version. This allows generated start menu items to be unique across versions.",
           "required":  false
       }
